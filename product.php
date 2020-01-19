@@ -81,18 +81,23 @@ if(isset($_GET["submit"]))
  $Description=$_GET["getDescription"];
  $Brand=$_GET["getBrandName"];
  $Price=$_GET["getPrice"];
- $Quantity=$_GET["getQuality"];
+ $Quanlity=$_GET["getQuality"];
  $Model=$_GET["getModel"];
- echo $Product;
- echo "<br>";
- echo $Description;
- echo "<br>";
- echo $Brand;
- echo "<br>";
- echo $Price;
- echo "<br>";
- echo $Quantity;
- echo "<br>";
- echo $Model;
+ $Servername="localhost";
+ $Dbusername="root";
+ $Dbpassword="";
+ $Dbname="homwrkz";
+ $connection=new mysqli($Servername,$Dbusername,$Dbpassword,$Dbname);
+ $Sql="INSERT INTO `product`( `Productname`, `Description`, `Brandname`, `Price`, `Quality`, `Modelnum`) 
+ VALUES ('$Product','$Description','$Brand',$Price,'$Quanlity',$Model)";
+ $result=$connection->query($Sql);
+ if($result===TRUE)
+ {
+     echo "pedikanda ayittond";
+ }
+ else
+ {
+     echo $connection->error;
+ }
 }
 ?>
